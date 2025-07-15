@@ -4,10 +4,12 @@
 Successfully converted your Govcon Giants podcast RSS feed to CSV format for import into your Framer website.
 
 ## Files Generated
-- **`govcon_giants_podcast_clean.csv`** - **RECOMMENDED** Clean CSV file with main podcast episodes only (660KB, 342 rows including header)
+- **`govcon_giants_podcast_with_platforms.csv`** - **🔥 FINAL FILE** - Enhanced CSV with Apple Podcasts and Spotify URLs (693KB, 341 episodes)
+- **`govcon_giants_podcast_clean.csv`** - Clean CSV file with main podcast episodes only (660KB, 342 rows including header)
 - **`govcon_giants_podcast.csv`** - Original CSV file with all episodes including Daily Windup (900KB, 507 rows including header)
 - **`rss_to_csv_parser.py`** - Python script used for RSS conversion (reusable for future updates)
 - **`clean_csv.py`** - Python script used to remove Daily Windup episodes
+- **`add_platform_urls.py`** - Python script used to add Apple Podcasts and Spotify URL columns
 
 ## Source Data
 - **RSS Feed URL:** https://feeds.libsyn.com/179924/rss
@@ -16,7 +18,7 @@ Successfully converted your Govcon Giants podcast RSS feed to CSV format for imp
 - **Total Episodes:** 506 episodes converted (341 main episodes + 165 Daily Windup episodes removed)
 
 ## CSV Structure
-The generated CSV contains 14 columns with comprehensive episode data:
+The enhanced CSV contains 16 columns with comprehensive episode data and platform URLs:
 
 | Column | Description |
 |--------|-------------|
@@ -34,6 +36,8 @@ The generated CSV contains 14 columns with comprehensive episode data:
 | `episode_url` | Episode page URL |
 | `keywords` | Episode keywords/tags |
 | `guid` | Unique episode identifier |
+| `apple_podcast_url` | Apple Podcasts URL template |
+| `spotify_url` | Spotify URL template |
 
 ## Data Processing Features
 The conversion and cleaning scripts include:
@@ -44,6 +48,7 @@ The conversion and cleaning scripts include:
 - ✅ UTF-8 encoding for special characters
 - ✅ Proper CSV escaping for commas in content
 - ✅ **Daily Windup episode filtering** (165 episodes removed from clean version)
+- ✅ **Apple Podcasts and Spotify URL columns** (ready for platform integration)
 
 ## Sample Data
 Here's what the clean episodes look like (Daily Windup episodes removed):
@@ -59,21 +64,24 @@ Here's what the clean episodes look like (Daily Windup episodes removed):
 - Author: Eric Coffie
 
 ## Using with Framer
-Your cleaned CSV file is now ready to import into Framer:
+Your enhanced CSV file is now ready to import into Framer:
 1. Open your Framer project
 2. Go to CMS Collections
-3. **Import the `govcon_giants_podcast_clean.csv` file** (recommended - contains only main podcast episodes)
+3. **Import the `govcon_giants_podcast_with_platforms.csv` file** (🔥 RECOMMENDED - includes Apple Podcasts & Spotify URLs)
 4. Map the columns to your desired content fields
-5. Use the data to build your podcast pages dynamically
+5. Use the data to build dynamic podcast pages with platform links
 
-**Note:** Use `govcon_giants_podcast_clean.csv` for your main podcast website. The original file with Daily Windup episodes is also available if needed.
+**Platform URLs:** The CSV includes template URLs for Apple Podcasts and Spotify. To complete the setup:
+- Find your show's Apple Podcasts ID and replace `[SHOW_ID]` in the apple_podcast_url column
+- Find your show's Spotify ID and replace `[SHOW_ID]` in the spotify_url column
 
 ## Future Updates
 To update your podcast data in the future:
 1. Run the RSS parser: `python3 rss_to_csv_parser.py`
 2. Clean the data: `python3 clean_csv.py` (removes Daily Windup episodes)
-3. Re-import the updated `govcon_giants_podcast_clean.csv` into Framer
-4. Your website will automatically reflect the latest episodes
+3. Add platform URLs: `python3 add_platform_urls.py`
+4. Re-import the updated `govcon_giants_podcast_with_platforms.csv` into Framer
+5. Your website will automatically reflect the latest episodes
 
 ## Technical Notes
 - The script uses Python's standard library (no external dependencies required)
@@ -81,6 +89,6 @@ To update your podcast data in the future:
 - All text content is cleaned and properly escaped for CSV format
 - Audio URLs point directly to MP3 files hosted on Libsyn
 
-Your cleaned podcast data is now ready for your Framer website! 🎉
+Your enhanced podcast data is now ready for your Framer website! 🎉
 
-**Quick Start:** Use `govcon_giants_podcast_clean.csv` - it contains 341 main podcast episodes, perfect for your website!
+**🔥 Quick Start:** Use `govcon_giants_podcast_with_platforms.csv` - it contains 341 main podcast episodes with Apple Podcasts and Spotify URL columns, perfect for your website!
